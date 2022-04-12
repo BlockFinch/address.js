@@ -131,11 +131,11 @@ export function getContractAddress(transaction: { from: string, nonce: BigNumber
     let from: string = null;
     try {
         from = transaction.from
-        from = string.replace('xdc','0x');
+        from = from.replace('xdc','0x');
         console.log('EthersJS edited from address', from);
         from = getAddress(from);
     } catch (error) {
-        logger.throwArgumentError("missing from address", "transaction", transaction);
+        logger.throwArgumentError("missing from addressaas", "transaction", transaction);
     }
 
     const nonce = stripZeros(arrayify(BigNumber.from(transaction.nonce).toHexString()));
