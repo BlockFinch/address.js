@@ -76,6 +76,14 @@ function ibanChecksum(address: string): string {
 
 export function getAddress(address: string): string {
     let result = null;
+    try {
+        let from = address
+        from = from.replace('xdc','0x');
+        console.log('EthersJS edited from address', from);
+        address = from;
+    } catch (error) {
+        logger.throwArgumentError("missing from addressaas", "transaction");
+    }
 
     if (typeof(address) !== "string") {
         logger.throwArgumentError("invalid address", "address", address);
